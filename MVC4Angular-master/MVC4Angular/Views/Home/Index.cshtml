@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Index";
+}
+
+<div ng-app="mainApp">
+    <section data-ng-controller="mainController">
+        <p>
+            <button type="button" class="btn btn-success" data-ng-hide="started" data-ng-click="start()">Start Demo</button>
+            <button type="button" class="btn btn-danger" data-ng-show="started" data-ng-click="stop()">Stop Demo</button>
+        </p>
+
+    </section>
+
+    <script type="text/ng-template" id="warning-dialog.html">
+        <div class="modal-header">
+            <h3>You're Idle. Do Something!</h3>
+        </div>
+        <div ng-idle-countdown="countdown" ng-init="countdown=5" class="modal-body">
+            <progressbar max="5" value="5" animate="false" class="progress-striped active">You'll be logged out in {{countdown}} second(s).</progressbar>
+        </div>
+
+    </script>
+    <script type="text/ng-template" id="timedout-dialog.html">
+        <div class="modal-header">
+            <h3>You've Timed Out!</h3>
+        </div>
+        <div class="modal-body">
+            <p>
+                You were idle too long. Normally you'd be logged out, but in this demo just do anything and you'll be reset.
+            </p>
+        </div>
+    </script>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/apps/main/main.js"></script>
+    <script src="~/Scripts/apps/main/noteService.js"></script>
+    <script src="~/Scripts/apps/main/mainController.js"></script>
+}
+
